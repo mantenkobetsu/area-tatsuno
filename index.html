@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>単語暗記アプリ</title>
+    <title>1学期 定期テスト対策アプリ</title>
     <style>
         :root {
             --bg: #f8fafc;
@@ -29,13 +29,29 @@
 
         .app-header { 
             background: var(--white); 
-            padding: 24px 20px; 
+            padding: 24px 20px 16px;
             text-align: center; 
             border-bottom: 1px solid #e2e8f0; 
             box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+            position: relative;
         }
         .app-header h1 { margin: 0; font-size: 1.25rem; font-weight: 800; color: var(--accent); }
         .app-header p { margin: 8px 0 0; font-size: 0.85rem; color: #64748b; }
+
+        .ver-badge {
+            position: absolute;
+            top: 12px;
+            right: 14px;
+            background: #1e293b;
+            color: #fff;
+            font-size: 0.65rem;
+            font-weight: 700;
+            padding: 4px 8px;
+            border-radius: 6px;
+            line-height: 1.4;
+            text-align: center;
+            white-space: nowrap;
+        }
 
         .container { padding: 15px; max-width: 600px; margin: 0 auto; }
 
@@ -105,6 +121,22 @@
             pointer-events: none; 
         }
 
+        .coming-soon-box {
+            background: #fff;
+            border-radius: 12px;
+            border: 1px solid #e2e8f0;
+            padding: 40px 20px;
+            text-align: center;
+            color: #94a3b8;
+            font-size: 1rem;
+            font-weight: 600;
+        }
+        .coming-soon-box span {
+            display: block;
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
         #g1:checked ~ #content-area .content-g1, 
         #g2:checked ~ #content-area .content-g2, 
         #g3:checked ~ #content-area .content-g3 { display: block; }
@@ -113,7 +145,8 @@
 <body>
 
 <header class="app-header">
-    <h1>テスト対策！単語暗記アプリ</h1>
+    <div class="ver-badge">たつの地域ver</div>
+    <h1>1学期 定期テスト対策アプリ</h1>
     <p>学年と科目を選んで学習を始めよう</p>
 </header>
 
@@ -136,7 +169,6 @@
     
     const data = {
         g1: {
-            "英語 (Sunshine)": ["1_English_SS_P4.html", "1_English_SS_P5.html", "1_English_SS_P6.html", "1_English_SS_P7.html", "1_English_SS_P8.html", "1_English_SS_P9.html", "1_English_SS_P10.html"],
             "英語 (NEW HORIZON)": ["1_English_NH_U1.html", "1_English_NH_U2.html", "1_English_NH_U3.html", "1_English_NH_U4.html", "1_English_NH_U5.html", "1_English_NH_U6.html", "1_English_NH_U7.html", "1_English_NH_U8.html", "1_English_NH_U9.html", "1_English_NH_U10.html", "1_English_NH_LR.html"],
             "理科": [
                 "1_rika_2-17.html", "1_rika_20-30.html", "1_rika_31-34.html", "1_rika_36-52.html", "1_rika_64-82.html", 
@@ -156,52 +188,42 @@
                 "1_rekishi_146-149.html"
             ],
             "地理": [
-                "1_chiri_48-51.html", "1_chiri_52-55.html", "1_chiri_48-55.html", "1_chiri_56-57.html", 
+                "1_chiri_2-7.html", "1_chiri_8-15.html", "1_chiri_16-17.html", "1_chiri_18-21.html", "1_chiri_22-25.html", "1_chiri_26-29.html", "1_chiri_30-33.html", "1_chiri_34-37.html", "1_chiri_38-41.html", "1_chiri_48-51.html", "1_chiri_52-55.html", "1_chiri_48-55.html", "1_chiri_56-57.html", 
                 "1_chiri_58-61.html", "1_chiri_66-67.html", "1_chiri_68-71.html", "1_chiri_72-75.html", 
                 "1_chiri_76-77.html", "1_chiri_82-83.html", "1_chiri_84-87.html", "1_chiri_94-97.html", 
                 "1_chiri_98-99.html", "1_chiri_100-101.html", "1_chiri_102-103.html", "1_chiri_108-111.html", 
                 "1_chiri_112-113.html", "1_chiri_114-115.html", "1_chiri_120-123.html", "1_chiri_124-125.html"
             ]
         },
-        g2: {
-            "英語 (Sunshine)": ["2_English_SS_P4.html", "2_English_SS_P5.html", "2_English_SS_P6.html", "2_English_SS_P7.html", "2_English_SS_P8.html", "2_English_SS_R2.html", "2_English_SS_R3.html"],
-            "英語 (NEW CROWN)": ["2_English_NC_L4.html", "2_English_NC_L5.html", "2_English_NC_L6.html", "2_English_NC_L7.html", "2_English_NC_L8.html", "2_English_NC_RL2.html", "2_English_NC_RL3.html"],
-            "理科": [
-                "2_rika_5-17.html", "2_rika_18-24.html", "2_rika_25-32.html", "2_rika_34-43.html", "2_rika_44-49.html", 
-                "2_rika_51-59.html", "2_rika_70-79.html", "2_rika_80-91.html", "2_rika_94-107.html", "2_rika_108-123.html", 
-                "2_rika_141-152.html", "2_rika_153-171.html", "2_rika_173-177.html", "2_rika_178-188.html", "2_rika_189-199.html", 
-                "2_rika_211-224.html", "2_rika_225-234.html", "2_rika_235-241.html", "2_rika_242-252.html", "2_rika_255-261.html", 
-                "2_rika_262-271.html"
-            ],
-            "歴史": [
-                "2_rekishi_100-101.html", "2_rekishi_104-105.html", "2_rekishi_106-107.html", "2_rekishi_108-111.html",
-                "2_rekishi_112-113.html", "2_rekishi_114-115.html", "2_rekishi_116-117.html", "2_rekishi_118-121.html",
-                "2_rekishi_124-125.html", "2_rekishi_126-129.html",
-                "2_rekishi_132-133.html", "2_rekishi_134-137.html", "2_rekishi_138-141.html", "2_rekishi_142-145.html", // 追加分
-                "2_rekishi_148-149.html", "2_rekishi_150-153.html", "2_rekishi_154-161.html", "2_rekishi_162-163.html", 
-                "2_rekishi_164-165.html", "2_rekishi_166-167.html", "2_rekishi_170-171.html", "2_rekishi_172-173.html", 
-                "2_rekishi_174-175.html", "2_rekishi_178-179.html", "2_rekishi_180-185.html", "2_rekishi_186-187.html"
-            ],
-            "地理": [
-                "2_chiri_174-175.html", "2_chiri_176-179.html", "2_chiri_180-183.html", "2_chiri_190-193.html", 
-                "2_chiri_194-197.html", "2_chiri_198-199.html", "2_chiri_206-209.html", "2_chiri_210-213.html", 
-                "2_chiri_214-216.html", "2_chiri_222-225.html", "2_chiri_226-227.html", "2_chiri_228-229.html",
-                "2_chiri_230-233.html", "2_chiri_238-239.html", "2_chiri_240-243.html", "2_chiri_244-249.html",
-                "2_chiri_256-259.html", "2_chiri_260-261.html", "2_chiri_262-265.html", "2_chiri_273-275.html",
-                "2_chiri_276-279.html", "2_chiri_280-284.html"
-            ]
-        },
+        g2: {},
         g3: {}
     };
 
+    // 1年生：各科目の表示上限ページ設定
+    const g1Limits = {
+        "英語 (NEW HORIZON)": 3,   // Unit 3まで
+        "理科": 52,
+        "歴史": 35,
+        "地理": 25
+    };
+
     const subjectStyles = {
-        "英語 (Sunshine)": "subj-sunshine",
         "英語 (NEW HORIZON)": "subj-horizon",
         "英語 (NEW CROWN)": "subj-crown",
         "理科": "subj-sci",
         "歴史": "subj-his",
         "地理": "subj-geo"
     };
+
+    function getStartNumber(fileName) {
+        // 英語：Unit番号を取得
+        const unitMatch = fileName.match(/_U(\d+)\.html$/);
+        if (unitMatch) return parseInt(unitMatch[1]);
+        // 理科・歴史・地理：先頭ページ番号を取得
+        const pageMatch = fileName.match(/_(\d+)[-,]/);
+        if (pageMatch) return parseInt(pageMatch[1]);
+        return 0;
+    }
 
     function formatLabel(fileName) {
         const nameWithoutExt = fileName.replace('.html', '').replace('ap', '');
@@ -230,21 +252,33 @@
 
         [1, 2, 3].forEach(gradeNum => {
             finalHtml += `<div class="tab-content content-g${gradeNum}">`;
+
+            // 2・3年は準備中表示
+            if (gradeNum === 2 || gradeNum === 3) {
+                finalHtml += `
+                    <div class="coming-soon-box">
+                        <span>🚧</span>
+                        現在準備中です。<br>もうしばらくお待ちください。
+                    </div>`;
+                finalHtml += `</div>`;
+                return;
+            }
+
             const gradeKey = `g${gradeNum}`;
             const gradeData = data[gradeKey];
-            
-            const displaySubjects = [
-                "英語 (Sunshine)", "英語 (NEW HORIZON)", "英語 (NEW CROWN)", 
-                "理科", "歴史", "地理"
-            ];
+
+            const displaySubjects = ["英語 (NEW HORIZON)", "理科", "歴史", "地理"];
 
             displaySubjects.forEach(subName => {
-                if (gradeNum === 1 && subName === "英語 (NEW CROWN)") return;
-                if (gradeNum === 2 && subName === "英語 (NEW HORIZON)") return;
-                
                 const cssClass = subjectStyles[subName] || "";
-                const files = gradeData[subName] || [];
+                let files = gradeData[subName] || [];
                 const isRangeType = subName === "理科" || subName === "歴史" || subName === "地理";
+
+                // 1年生の表示制限フィルター
+                if (gradeNum === 1 && g1Limits[subName] !== undefined) {
+                    const limit = g1Limits[subName];
+                    files = files.filter(f => getStartNumber(f) <= limit && !f.includes('_LR'));
+                }
 
                 finalHtml += `
                     <details class="${cssClass}">
@@ -255,9 +289,7 @@
                 if (files.length > 0) {
                     files.forEach(file => {
                         const label = isRangeType ? formatRangeLabel(file) : formatLabel(file);
-                        // 暗記用ファイル名（apなし）
                         const ankiFile = file.replace('ap.html', '.html');
-                        // テスト用ファイル名（apあり）
                         const testFile = ankiFile.replace('.html', 'ap.html');
                         
                         finalHtml += `
@@ -281,6 +313,7 @@
                 }
                 finalHtml += `</ul></details>`;
             });
+
             finalHtml += `</div>`;
         });
         contentArea.innerHTML = finalHtml;
